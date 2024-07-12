@@ -1,7 +1,7 @@
 *{ box-sizing: border-box;}
 @keyframes rotate {
     100% {
-        background-position: 15% 50%;
+        background-position: 50% 15%;
     }
 }
 :root{
@@ -14,7 +14,7 @@
     height: 100vh;
     padding: 0 24px;
     background-color: var(--color-primary);
-    background-image: url('../../assets/img/background.png');
+    background-image: url('../../assets/img/background.svg');
     background-repeat: no-repeat;
     background-size: cover;
     color: #f9f9f9;
