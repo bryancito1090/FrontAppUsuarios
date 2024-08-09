@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="usuario-form">
+      <h2>{{ isEdit ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+      <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+        <input formControlName="usuarioid" type="hidden">
+        
+        <div>
+          <label for="usuarioid">Usuario ID:</label>
+          <input id="usuarioid" formControlName="usuarioid">
+        </div>
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input id="nombre" formControlName="nombre">
+        </div>
+        
+        <div>
+          <label for="correoelectronico">Correo Electrónico:</label>
+          <input id="correoelectronico" formControlName="correoelectronico">
+        </div>
+        
+        <div>
+          <label for="fecharegistro">Fecha de Registro:</label>
+          <input id="fecharegistro" formControlName="fecharegistro" type="date">
+        </div>
+        
+        <div>
+          <label for="sector">Sector:</label>
+          <input id="sector" formControlName="sector">
+        </div>
+        
+        <button type="submit">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
+        <button type="button" (click)="resetForm()">Cancelar</button>
+      </form>
+    </div>
+    
+    <div class="usuario-list">
+      <h2>Lista de Usuarios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo Electrónico</th>
+            <th>Fecha de Registro</th>
+            <th>Sector</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{usuario.usuarioid}}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.correoelectronico }}</td>
+            <td>{{ usuario.fecharegistro | date }}</td>
+            <td>{{ usuario.sector }}</td>
+            <td>
+              <button (click)="editUsuario(usuario)">Editar</button>
+              <button (click)="deleteUsuario(usuario.usuarioid)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="usuarios-container">
+    <button class="usuarios-button" (click)="cargarUsuarios()">Mostrar Usuarios</button>
+  
+    <div *ngIf="mostrarTabla" class="usuarios-table-container">
+      <h2>Lista de Usuarios</h2>
+      <table class="usuarios-table">
+        <thead>
+          <tr>
+            <th>Usuario ID</th>
+            <th>Nombre</th>
+            <th>Correo Electronico</th>
+            <th>Fecha Registro</th>
+            <th>Sector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuariosAll">
+            <td>{{ usuario.usuarioid }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.correoelectronico }}</td>
+            <td>{{ usuario.fecharegistro }}</td>
+            <td>{{ usuario.sector }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

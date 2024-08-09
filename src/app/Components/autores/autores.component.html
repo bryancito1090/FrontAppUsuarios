@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="autor-form">
+      <h2>{{ editMode ? 'Editar Autor' : 'Crear Autor' }}</h2>
+      <form (ngSubmit)="editMode ? updateAutor() : createAutor()">
+        <div>
+          <label for="autorid">ID:</label>
+          <input [(ngModel)]="autor.autorid" name="autorid" required>
+        </div>
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input [(ngModel)]="autor.nombre" name="nombre" required>
+        </div>
+        <button type="submit">{{ editMode ? 'Actualizar' : 'Crear' }}</button>
+        <button type="button" (click)="clearForm()">Cancelar</button>
+      </form>
+    </div>
+    
+    <div class="autor-list">
+      <h2>Lista de Autores</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let autor of autores">
+            <td>{{ autor.autorid }}</td>
+            <td>{{ autor.nombre }}</td>
+            <td>
+              <button (click)="editAutor(autor)">Editar</button>
+              <button (click)="deleteAutor(autor.autorid!)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .categoria-form, .categoria-list {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .categoria-form h2, .categoria-list h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .categoria-form form div {
+    margin-bottom: 15px;
+  }
+  
+  .categoria-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .categoria-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  
+  .categoria-form input:focus {
+    border-color: #007bff;
+  }
+  
+  .categoria-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .categoria-form button[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  .categoria-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .categoria-form button[type="button"]:hover {
+    background-color: #5a6268;
+  }
+  
+  .categoria-list table {
+    width: 100%;
+    border-collapse: collapse;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .categoria-list th, .categoria-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .categoria-list th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .categoria-list tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .categoria-list button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .categoria-list button:hover {
+    background-color: #0056b3;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

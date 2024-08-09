@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="libro-form">
+      <h2>{{ editMode ? 'Editar Libro' : 'Crear Libro' }}</h2>
+      <form (ngSubmit)="editMode ? updateLibro() : createLibro()">
+        <div>
+          <label for="libroid">Libro ID:</label>
+          <input [(ngModel)]="libro.libroid" name="libroid" required>
+        </div>
+        <div>
+          <label for="titulo">Título:</label>
+          <input [(ngModel)]="libro.titulo" name="titulo" required>
+        </div>
+        <div>
+          <label for="autorid">Autor ID:</label>
+          <input [(ngModel)]="libro.autorid" name="autorid" required>
+        </div>
+        <div>
+          <label for="categoriaid">Categoría ID:</label>
+          <input [(ngModel)]="libro.categoriaid" name="categoriaid" required>
+        </div>
+        <div>
+          <label for="isbn">ISBN:</label>
+          <input [(ngModel)]="libro.isbn" name="isbn" required>
+        </div>
+        <button type="submit">{{ editMode ? 'Actualizar' : 'Crear' }}</button>
+        <button type="button" (click)="clearForm()">Cancelar</button>
+      </form>
+    </div>
+    
+    <div class="libro-list">
+      <h2>Lista de Libros</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor ID</th>
+            <th>Categoría ID</th>
+            <th>ISBN</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let libro of libros">
+            <td>{{ libro.libroid }}</td>
+            <td>{{ libro.titulo }}</td>
+            <td>{{ libro.autorid }}</td>
+            <td>{{ libro.categoriaid }}</td>
+            <td>{{ libro.isbn }}</td>
+            <td>
+              <button (click)="editLibro(libro)">Editar</button>
+              <button (click)="deleteLibro(libro.libroid!)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

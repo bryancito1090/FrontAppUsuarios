@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="prestamo-form">
+      <h2>Gestión de Préstamos</h2>
+      <form [formGroup]="prestamoForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="prestamoid">Prestamo ID:</label>
+            <input id="prestamoid" formControlName="prestamoid" type="number" />
+          </div>
+        <div>
+          <label for="libroid">Libro ID:</label>
+          <input id="libroid" formControlName="libroid" type="number" />
+        </div>
+        <div>
+          <label for="usuarioid">Usuario ID:</label>
+          <input id="usuarioid" formControlName="usuarioid" type="number" />
+        </div>
+        <div>
+          <label for="fechaprestamo">Fecha de Préstamo:</label>
+          <input id="fechaprestamo" formControlName="fechaprestamo" type="date" />
+        </div>
+        <div>
+          <label for="fechadevolucion">Fecha de Devolución:</label>
+          <input id="fechadevolucion" formControlName="fechadevolucion" type="date" />
+        </div>
+        <div>
+          <label for="empleadoid">Empleado ID:</label>
+          <input id="empleadoid" formControlName="empleadoid" type="number" />
+        </div>
+        <div>
+          <label for="sector">Sector:</label>
+          <input id="sector" formControlName="sector" type="text" />
+        </div>
+        <button type="submit">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
+        <button type="button" (click)="resetForm()">Cancelar</button>
+      </form>
+    </div>
+  
+    <div class="prestamo-list" *ngIf="prestamos.length">
+      <h3>Lista de Préstamos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Prestamo ID</th>
+            <th>Libro ID</th>
+            <th>Usuario ID</th>
+            <th>Fecha de Préstamo</th>
+            <th>Fecha de Devolución</th>
+            <th>Empleado ID</th>
+            <th>Sector</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prestamo of prestamos">
+            <td>{{prestamo.prestamoid}}</td>
+            <td>{{ prestamo.libroid }}</td>
+            <td>{{ prestamo.usuarioid }}</td>
+            <td>{{ prestamo.fechaprestamo | date }}</td>
+            <td>{{ prestamo.fechadevolucion | date }}</td>
+            <td>{{ prestamo.empleadoid }}</td>
+            <td>{{ prestamo.sector }}</td>
+            <td>
+              <button (click)="editPrestamo(prestamo)">Editar</button>
+              <button *ngIf="prestamo.prestamoid !== undefined" (click)="deletePrestamo(prestamo.prestamoid)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="prestamos-container">
+    <button class="prestamos-button" (click)="mostrarTabla()">Mostrar Préstamos</button>
+  
+    <div *ngIf="mostrar" class="prestamos-table-container">
+      <h2>Lista de Préstamos</h2>
+      <table class="prestamos-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Libro Id</th>
+            <th>Usuario Id</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Empleado Id</th>
+            <th>Sector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prestamo of prestamosAll">
+            <td>{{ prestamo.prestamoid }}</td>
+            <td>{{ prestamo.libroid }}</td>
+            <td>{{ prestamo.usuarioid }}</td>
+            <td>{{ prestamo.fechaprestamo | date:'short' }}</td>
+            <td>{{ prestamo.fechadevolucion | date:'short' }}</td>
+            <td>{{ prestamo.empleadoid }}</td>
+            <td>{{ prestamo.sector }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="empleado-form">
+      <h2>Gestión de Empleados</h2>
+      <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="empleadoid">Empleado Id:</label>
+          <input id="empleadoid" formControlName="empleadoid" type="text" />
+        </div>
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input id="nombre" formControlName="nombre" type="text" />
+        </div>
+        <div>
+          <label for="cargo">Cargo:</label>
+          <input id="cargo" formControlName="cargo" type="text" />
+        </div>
+        <div>
+          <label for="fecha_registro">Fecha de Registro:</label>
+          <input id="fecha_registro" formControlName="fecha_registro" type="date" />
+        </div>
+        <div>
+          <label for="sector">Sector:</label>
+          <input id="sector" formControlName="sector" type="text" />
+        </div>
+        <button type="submit">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
+        <button type="button" (click)="resetForm()">Cancelar</button>
+      </form>
+    </div>
+  
+    <div class="empleado-list" *ngIf="empleados.length">
+      <h3>Lista de Empleados</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cargo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados">
+            <td>{{ empleado.empleadoid }}</td>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.cargo }}</td>
+            <td>
+              <button (click)="editEmpleado(empleado)">Editar</button>
+              <button *ngIf="empleado.empleadoid !== undefined" (click)="deleteEmpleado(empleado.empleadoid)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+ <div class="empleados-container">
+  <button class="empleados-button" (click)="cargarEmpleados()">Mostrar Empleados</button>
+
+  <div *ngIf="mostrarTabla" class="empleados-table-container">
+    <h2>Lista de Empleados</h2>
+    <table class="empleados-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>Fecha de Registro</th>
+          <th>Sector</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of empleadosAll">
+          <td>{{ empleado.empleadoid }}</td>
+          <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.cargo }}</td>
+          <td>{{ empleado.fecha_registro | date:'short' }}</td>
+          <td>{{ empleado.sector }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  

@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Lista de Auditorías</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Fecha</th>
+          <th>Tipo de Operación</th>
+          <th>Nombre de la Tabla</th>
+          <th>Datos Anteriores</th>
+          <th>Datos Nuevos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let auditoria of auditorias">
+          <td>{{ auditoria.useR_NAME }}</td>
+          <td>{{ auditoria.fecha | date:'short' }}</td>
+          <td>{{ auditoria.tipO_OPERACION }}</td>
+          <td>{{ auditoria.nombrE_TABLE }}</td>
+          <td>{{ auditoria.anterior }}</td>
+          <td>{{ auditoria.nuevo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
