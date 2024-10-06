@@ -20,8 +20,7 @@ export class AuditoriaComponent implements OnInit {
   ngOnInit(): void {
     this.auditoriaService.getAuditorias().subscribe(data => {
       this.auditorias = data;
-      console.log(data);
-      
+      console.log("autoria",data);
     });
   }
 }

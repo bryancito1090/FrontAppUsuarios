@@ -82,7 +82,7 @@
             <td>{{ usuario.usuarioid }}</td>
             <td>{{ usuario.nombre }}</td>
             <td>{{ usuario.correoelectronico }}</td>
-            <td>{{ usuario.fecharegistro }}</td>
+            <td>{{ usuario.fecharegistro | date:'short'  }}</td>
             <td>{{ usuario.sector }}</td>
           </tr>
         </tbody>
